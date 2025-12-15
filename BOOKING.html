@@ -75,7 +75,7 @@
         .tab-button.active {
             background-color: white;
             color: #2c3e50;
-            border-bottom: 3px solid #3498db;
+            border-bottom: 3px solid #9ACD32;
         }
         
         .tab-content {
@@ -99,7 +99,7 @@
         }
         
         .section-title i {
-            color: #3498db;
+            color: #9ACD32;
         }
         
         .form-group {
@@ -123,7 +123,7 @@
         }
         
         input:focus, select:focus, textarea:focus {
-            border-color: #3498db;
+            border-color: #9ACD32;
             outline: none;
         }
         
@@ -145,17 +145,9 @@
             flex: 1;
         }
         
-        .form-col-2 {
-            flex: 2;
-        }
-        
-        .form-col-3 {
-            flex: 3;
-        }
-        
         .btn {
             padding: 13px 25px;
-            background-color: #3498db;
+            background-color: #9ACD32;
             color: white;
             border: none;
             border-radius: 6px;
@@ -224,6 +216,7 @@
             border: 1px solid #e1e8f0;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             transition: transform 0.2s;
+            position: relative;
         }
         
         .booking-card:hover, .tour-card:hover {
@@ -247,7 +240,7 @@
         }
         
         .booking-customer-count, .tour-customer-count {
-            background-color: #3498db;
+            background-color: #9ACD32;
             color: white;
             padding: 6px 14px;
             border-radius: 20px;
@@ -308,7 +301,7 @@
             background-color: #f8f9fa;
             margin-bottom: 6px;
             border-radius: 4px;
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #9ACD32;
             font-size: 14px;
         }
         
@@ -341,7 +334,7 @@
         .stat-number {
             font-size: 32px;
             font-weight: 700;
-            color: #3498db;
+            color: #9ACD32;
             margin: 10px 0;
         }
         
@@ -513,7 +506,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #3498db;
+            background-color: #9ACD32;
             color: white;
             display: flex;
             align-items: center;
@@ -522,7 +515,7 @@
         }
         
         .booking-status-future {
-            border-left: 5px solid #3498db;
+            border-left: 5px solid #9ACD32;
         }
         
         .booking-status-today {
@@ -560,7 +553,7 @@
         }
         
         .submenu-btn.active {
-            background-color: #3498db;
+            background-color: #9ACD32;
             color: white;
         }
         
@@ -601,13 +594,101 @@
             white-space: nowrap;
         }
         
+        /* Thêm style mới cho cảnh báo trùng lịch */
+        .schedule-conflict {
+            background-color: #fff8e1;
+            border: 1px solid #ffd54f;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        
+        .schedule-conflict i {
+            color: #ff9800;
+            margin-right: 8px;
+        }
+        
+        .current-tours-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .current-tour-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 5px solid #9ACD32;
+            border: 1px solid #e1e8f0;
+        }
+        
+        .tour-time-range {
+            background-color: #e3f2fd;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-top: 5px;
+            display: inline-block;
+        }
+        
+        .conflict-alert {
+            background-color: #ffebee;
+            border: 1px solid #ffcdd2;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        .data-management {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid #eaeaea;
+        }
+        
+        /* Nút xóa booking */
+        .btn-delete-booking {
+    padding: 5px 10px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+    z-index: 10;
+    margin-top: 10px;  
+    width: 100%;       
+}
+        
+        .btn-delete-booking:hover {
+            background-color: #c0392b;
+        }
+        
+        .delete-booking-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: flex-end;
+        }
+        
+        .btn-delete-sm {
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+        
         @media (max-width: 768px) {
             .form-row {
                 flex-direction: column;
                 gap: 10px;
             }
             
-            .booking-list, .tour-list, .room-list {
+            .booking-list, .tour-list, .room-list, .current-tours-list {
                 grid-template-columns: 1fr;
             }
             
@@ -632,13 +713,21 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            
+            .btn-delete-booking {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-hotel"></i> ỨNG DỤNG QUẢN LÝ BOOKING & CHIA PHÒNG</h1>
+            <h1><i class="fas fa-hotel"></i> ỨNG DỤNG QUẢN LÝ BOOKING MYGREEN</h1>
             <p>QUẢN LÝ 50 NHÂN VIÊN VÀ PHÂN CHIA VÀO CÁC PHÒNG 2-6 NGƯỜI</p>
             <div class="today-date" id="todayDate"></div>
         </header>
@@ -650,6 +739,9 @@
             <button class="tab-button" data-tab="room-assignment">
                 <i class="fas fa-door-open"></i> CHIA PHÒNG
             </button>
+            <button class="tab-button" data-tab="current-tours">
+                <i class="fas fa-running"></i> TOUR ĐANG DIỄN RA
+            </button>
             <button class="tab-button" data-tab="future-bookings">
                 <i class="fas fa-calendar-alt"></i> BOOKING TƯƠNG LAI
             </button>
@@ -658,6 +750,9 @@
             </button>
             <button class="tab-button" data-tab="statistics">
                 <i class="fas fa-chart-bar"></i> THỐNG KÊ
+            </button>
+            <button class="tab-button" data-tab="data-management">
+                <i class="fas fa-database"></i> QUẢN LÝ DỮ LIỆU
             </button>
         </div>
         
@@ -727,6 +822,22 @@
                     <!-- Các booking hôm nay sẽ hiển thị ở đây -->
                 </div>
             </div>
+            
+            <!-- Phần xóa booking (ẩn/modal style) -->
+            <div id="deleteBookingModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+                <div style="background-color: white; padding: 30px; border-radius: 10px; max-width: 500px; width: 90%;">
+                    <h3 style="color: #e74c3c; margin-bottom: 15px;"><i class="fas fa-exclamation-triangle"></i> XÁC NHẬN XÓA BOOKING</h3>
+                    <p id="deleteBookingMessage" style="margin-bottom: 20px;"></p>
+                    <div class="delete-booking-buttons">
+                        <button class="btn btn-danger" id="confirmDeleteBookingBtn">
+                            <i class="fas fa-trash"></i> XÓA BOOKING
+                        </button>
+                        <button class="btn btn-secondary" id="cancelDeleteBookingBtn">
+                            <i class="fas fa-times"></i> HỦY BỎ
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- Tab Chia Phòng -->
@@ -766,6 +877,11 @@
                             <div class="detail-value" id="selectedBookingAssignedStaff"></div>
                         </div>
                     </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-danger btn-sm" onclick="showDeleteBookingModal(selectedBookingId)">
+                            <i class="fas fa-trash"></i> XÓA BOOKING NÀY
+                        </button>
+                    </div>
                 </div>
             </div>
             
@@ -794,10 +910,10 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="staffCodes"><i class="fas fa-id-badge"></i> MÃ SỐ NHÂN VIÊN (PHÂN CÁCH BẰNG DẤU PHẨY)</label>
-                    <input type="text" id="staffCodes" class="uppercase" placeholder="VD: NV001, NV002, NV003...">
+                    <label for="staffCodes"><i class="fas fa-id-badge"></i> TÊN/MÃ NHÂN VIÊN (PHÂN CÁCH BẰNG DẤU PHẨY)</label>
+                    <input type="text" id="staffCodes" class="uppercase" placeholder="VD: ANH TUẤN, CHỊ MAI, 001, 002...">
                     <div id="duplicateWarning" class="duplicate-warning" style="display:none;">
-                        <i class="fas fa-exclamation-triangle"></i> CẢNH BÁO: MỘT SỐ MÃ NHÂN VIÊN ĐÃ ĐƯỢC PHÂN CÔNG VÀO PHÒNG KHÁC!
+                        <i class="fas fa-exclamation-triangle"></i> CẢNH BÁO: MỘT SỐ NHÂN VIÊN ĐÃ ĐƯỢC PHÂN CÔNG VÀO PHÒNG KHÁC!
                     </div>
                 </div>
                 
@@ -823,6 +939,60 @@
                     <div id="bookingRoomsList" class="room-list">
                         <!-- Các phòng đã phân công sẽ hiển thị ở đây -->
                     </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab TOUR ĐANG DIỄN RA -->
+        <div id="current-tours" class="tab-content">
+            <h2 class="section-title"><i class="fas fa-running"></i> TOUR ĐANG DIỄN RA</h2>
+            
+            <div id="currentToursAlert" class="alert" style="display:none;"></div>
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="filterCurrentDate"><i class="fas fa-calendar"></i> LỌC THEO NGÀY</label>
+                        <input type="date" id="filterCurrentDate">
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="filterCurrentTime"><i class="fas fa-clock"></i> LỌC THEO GIỜ HIỆN TẠI</label>
+                        <input type="time" id="filterCurrentTime">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn" id="refreshCurrentToursBtn">
+                    <i class="fas fa-sync-alt"></i> LÀM MỚI DANH SÁCH
+                </button>
+                <button class="btn btn-secondary" id="showAllCurrentToursBtn">
+                    <i class="fas fa-eye"></i> HIỂN THỊ TẤT CẢ
+                </button>
+                <button class="btn btn-success" id="showNowToursBtn">
+                    <i class="fas fa-clock"></i> HIỆN TẠI
+                </button>
+            </div>
+            
+            <div class="form-group" style="margin-top: 30px;">
+                <h3 class="section-title" style="font-size: 18px;">
+                    <i class="fas fa-list"></i> DANH SÁCH TOUR ĐANG DIỄN RA
+                </h3>
+                
+                <div id="currentToursList" class="current-tours-list">
+                    <!-- Danh sách tour đang diễn ra sẽ hiển thị ở đây -->
+                </div>
+            </div>
+            
+            <div class="form-group" style="margin-top: 40px;">
+                <h3 class="section-title" style="font-size: 18px;">
+                    <i class="fas fa-user-tie"></i> NHÂN VIÊN ĐANG LÀM VIỆC
+                </h3>
+                
+                <div id="currentStaffList" class="current-tours-list">
+                    <!-- Danh sách nhân viên đang làm việc sẽ hiển thị ở đây -->
                 </div>
             </div>
         </div>
@@ -935,7 +1105,7 @@
                         <div class="form-col">
                             <div class="form-group">
                                 <label for="offFilterStaff"><i class="fas fa-user"></i> LỌC THEO NHÂN VIÊN</label>
-                                <input type="text" id="offFilterStaff" class="uppercase" placeholder="NHẬP MÃ HOẶC TÊN NV...">
+                                <input type="text" id="offFilterStaff" class="uppercase" placeholder="NHẬP TÊN HOẶC MÃ NV...">
                             </div>
                         </div>
                     </div>
@@ -972,7 +1142,7 @@
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <i class="fas fa-users fa-2x" style="color: #3498db;"></i>
+                    <i class="fas fa-users fa-2x" style="color: #9ACD32;"></i>
                     <div class="stat-number" id="totalStaff">50</div>
                     <div class="stat-label">TỔNG NHÂN VIÊN</div>
                 </div>
@@ -1006,8 +1176,8 @@
                 </div>
                 <div class="form-col">
                     <div class="form-group">
-                        <label for="statStaffCode"><i class="fas fa-id-card"></i> LỌC THEO MÃ NV (TÙY CHỌN)</label>
-                        <input type="text" id="statStaffCode" class="uppercase" placeholder="VD: NV001">
+                        <label for="statStaffCode"><i class="fas fa-id-card"></i> LỌC THEO TÊN/MÃ NV (TÙY CHỌN)</label>
+                        <input type="text" id="statStaffCode" class="uppercase" placeholder="VD: ANH TUẤN, 001, NV001">
                     </div>
                 </div>
             </div>
@@ -1015,7 +1185,7 @@
             <table id="statsTable">
                 <thead>
                     <tr>
-                        <th>MÃ NV</th>
+                        <th>TÊN/MÃ NV</th>
                         <th>TÊN NHÂN VIÊN</th>
                         <th>SỐ BOOKING</th>
                         <th>PHÒNG ĐÃ PHÂN</th>
@@ -1037,28 +1207,132 @@
             </div>
         </div>
         
+        <!-- Tab Quản Lý Dữ Liệu (MỚI) -->
+        <div id="data-management" class="tab-content">
+            <h2 class="section-title"><i class="fas fa-database"></i> QUẢN LÝ DỮ LIỆU</h2>
+            
+            <div id="dataAlert" class="alert" style="display:none;"></div>
+            
+            <div class="data-management">
+                <h3 class="section-title" style="font-size: 18px;">
+                    <i class="fas fa-save"></i> LƯU DỮ LIỆU
+                </h3>
+                
+                <p>Dữ liệu sẽ tự động được lưu vào bộ nhớ trình duyệt (localStorage). 
+                Bạn có thể sử dụng các chức năng bên dưới để quản lý dữ liệu:</p>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-success" id="saveDataBtn">
+                        <i class="fas fa-save"></i> LƯU DỮ LIỆU NGAY
+                    </button>
+                    <button class="btn" id="loadDataBtn">
+                        <i class="fas fa-download"></i> TẢI LẠI DỮ LIỆU
+                    </button>
+                    <button class="btn btn-danger" id="clearDataBtn">
+                        <i class="fas fa-trash"></i> XÓA TẤT CẢ DỮ LIỆU
+                    </button>
+                </div>
+                
+                <div class="form-group" style="margin-top: 30px;">
+                    <h3 class="section-title" style="font-size: 18px;">
+                        <i class="fas fa-file-export"></i> XUẤT DỮ LIỆU
+                    </h3>
+                    
+                    <p>Xuất dữ liệu ra file JSON để lưu trữ hoặc chia sẻ:</p>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-warning" id="exportAllDataBtn">
+                            <i class="fas fa-file-export"></i> XUẤT TẤT CẢ DỮ LIỆU
+                        </button>
+                        <button class="btn btn-warning" id="exportBookingsBtn">
+                            <i class="fas fa-calendar-export"></i> XUẤT BOOKING
+                        </button>
+                        <button class="btn btn-warning" id="exportStaffBtn">
+                            <i class="fas fa-users-export"></i> XUẤT NHÂN VIÊN
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 30px;">
+                    <h3 class="section-title" style="font-size: 18px;">
+                        <i class="fas fa-file-import"></i> NHẬP DỮ LIỆU
+                    </h3>
+                    
+                    <p>Nhập dữ liệu từ file JSON (chỉ hỗ trợ định dạng đúng):</p>
+                    
+                    <div class="form-group">
+                        <label for="importFile"><i class="fas fa-file-import"></i> CHỌN FILE JSON</label>
+                        <input type="file" id="importFile" accept=".json">
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-success" id="importDataBtn">
+                            <i class="fas fa-file-import"></i> NHẬP DỮ LIỆU
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 30px;">
+                    <h3 class="section-title" style="font-size: 18px;">
+                        <i class="fas fa-info-circle"></i> THÔNG TIN DỮ LIỆU HIỆN TẠI
+                    </h3>
+                    
+                    <div id="dataInfo">
+                        <div class="detail-row">
+                            <div class="detail-label">Tổng số Booking:</div>
+                            <div class="detail-value" id="totalBookingsCount">0</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Booking hôm nay:</div>
+                            <div class="detail-value" id="todayBookingsCount">0</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Nhân viên đã phân công:</div>
+                            <div class="detail-value" id="assignedStaffCount">0</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Dung lượng lưu trữ:</div>
+                            <div class="detail-value" id="storageSize">0 KB</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Lần lưu cuối:</div>
+                            <div class="detail-value" id="lastSaved">Chưa lưu</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <footer>
             <p>ỨNG DỤNG QUẢN LÝ BOOKING & CHIA PHÒNG &copy; 2023 - QUẢN LÝ 50 NHÂN VIÊN</p>
+            <p style="margin-top: 10px; font-size: 12px;">Dữ liệu được lưu tự động vào trình duyệt</p>
         </footer>
     </div>
 
     <script>
-        // Dữ liệu cho 50 nhân viên
-        const staffData = Array.from({length: 50}, (_, i) => {
-            const staffNum = (i + 1).toString().padStart(3, '0');
-            return {
-                code: `NV${staffNum}`,
-                name: `NHÂN VIÊN ${staffNum}`,
-                bookingsAssigned: [], // Mảng chứa ID các booking đã được phân công
-                roomsAssigned: [], // Mảng chứa các phòng đã phân công
-                offDays: [], // Mảng chứa các ngày off [{date: '2023-12-25', reason: 'Nghỉ lễ'}]
-                isAvailableToday: true // Mặc định có mặt
-            };
-        });
-        
-        // Dữ liệu ứng dụng
+        // Khởi tạo dữ liệu
+        let staffData = [];
         let bookings = [];
-        let roomAssignments = []; // Lưu trữ phân công phòng
+        let selectedBookingId = null;
+        let bookingToDelete = null; // Biến lưu booking cần xóa
+        
+        // Khởi tạo dữ liệu nhân viên mặc định
+        function initializeStaffData() {
+            staffData = Array.from({length: 50}, (_, i) => {
+                const staffNum = (i + 1).toString().padStart(3, '0');
+                return {
+                    id: i + 1,
+                    code: `NV${staffNum}`,
+                    displayName: `NHÂN VIÊN ${staffNum}`,
+                    customName: `NV${staffNum}`,
+                    bookingsAssigned: [],
+                    roomsAssigned: [],
+                    offDays: [],
+                    isAvailableToday: true,
+                    currentAssignments: []
+                };
+            });
+        }
         
         // Hiển thị ngày hiện tại
         function updateTodayDate() {
@@ -1068,54 +1342,279 @@
                 `HÔM NAY: ${today.toLocaleDateString('vi-VN', options).toUpperCase()}`;
         }
         
+        // ==================== QUẢN LÝ DỮ LIỆU - LOCALSTORAGE ====================
+        
+        // Lưu dữ liệu vào localStorage
+        function saveDataToStorage() {
+            try {
+                const data = {
+                    staffData: staffData,
+                    bookings: bookings,
+                    lastSaved: new Date().toISOString()
+                };
+                
+                localStorage.setItem('bookingAppData', JSON.stringify(data));
+                updateDataInfo();
+                
+                // Hiển thị thông báo thành công
+                showAlert('dataAlert', 'ĐÃ LƯU DỮ LIỆU THÀNH CÔNG!', 'success');
+                
+                return true;
+            } catch (error) {
+                console.error('Lỗi khi lưu dữ liệu:', error);
+                showAlert('dataAlert', 'LỖI KHI LƯU DỮ LIỆU: ' + error.message, 'danger');
+                return false;
+            }
+        }
+        
+        // Tải dữ liệu từ localStorage
+        function loadDataFromStorage() {
+            try {
+                const savedData = localStorage.getItem('bookingAppData');
+                if (savedData) {
+                    const data = JSON.parse(savedData);
+                    
+                    staffData = data.staffData || [];
+                    bookings = data.bookings || [];
+                    
+                    // Đảm bảo staffData có đủ 50 nhân viên
+                    if (staffData.length < 50) {
+                        initializeStaffData();
+                        // Cập nhật thông tin từ dữ liệu đã lưu
+                        data.staffData.forEach(savedStaff => {
+                            const existingStaff = staffData.find(s => s.id === savedStaff.id);
+                            if (existingStaff) {
+                                Object.assign(existingStaff, savedStaff);
+                            }
+                        });
+                    }
+                    
+                    updateDataInfo();
+                    showAlert('dataAlert', 'ĐÃ TẢI DỮ LIỆU THÀNH CÔNG!', 'success');
+                    
+                    // Cập nhật giao diện
+                    updateAllUI();
+                    
+                    return true;
+                } else {
+                    showAlert('dataAlert', 'KHÔNG CÓ DỮ LIỆU ĐÃ LƯU!', 'warning');
+                    return false;
+                }
+            } catch (error) {
+                console.error('Lỗi khi tải dữ liệu:', error);
+                showAlert('dataAlert', 'LỖI KHI TẢI DỮ LIỆU: ' + error.message, 'danger');
+                return false;
+            }
+        }
+        
+        // Xóa tất cả dữ liệu
+        function clearAllData() {
+            if (confirm('BẠN CÓ CHẮC CHẮN MUỐN XÓA TẤT CẢ DỮ LIỆU? HÀNH ĐỘNG NÀY KHÔNG THỂ HOÀN TÁC!')) {
+                localStorage.removeItem('bookingAppData');
+                initializeStaffData();
+                bookings = [];
+                selectedBookingId = null;
+                
+                updateDataInfo();
+                updateAllUI();
+                
+                showAlert('dataAlert', 'ĐÃ XÓA TẤT CẢ DỮ LIỆU!', 'success');
+            }
+        }
+        
+        // Xuất dữ liệu ra file JSON
+        function exportData(type = 'all') {
+            let dataToExport;
+            let fileName;
+            
+            switch(type) {
+                case 'bookings':
+                    dataToExport = bookings;
+                    fileName = `bookings_${new Date().toISOString().slice(0, 10)}.json`;
+                    break;
+                case 'staff':
+                    dataToExport = staffData;
+                    fileName = `staff_${new Date().toISOString().slice(0, 10)}.json`;
+                    break;
+                default:
+                    dataToExport = {
+                        staffData: staffData,
+                        bookings: bookings,
+                        exportedAt: new Date().toISOString()
+                    };
+                    fileName = `booking_app_data_${new Date().toISOString().slice(0, 10)}.json`;
+            }
+            
+            const dataStr = JSON.stringify(dataToExport, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(dataBlob);
+            downloadLink.download = fileName;
+            downloadLink.click();
+            
+            showAlert('dataAlert', `ĐÃ XUẤT DỮ LIỆU ${type.toUpperCase()} THÀNH CÔNG!`, 'success');
+        }
+        
+        // Nhập dữ liệu từ file
+        function importDataFromFile(file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+                    
+                    // Kiểm tra định dạng dữ liệu
+                    if (importedData.bookings && importedData.staffData) {
+                        // Nhập tất cả dữ liệu
+                        if (confirm('BẠN CÓ MUỐN THAY THẾ TẤT CẢ DỮ LIỆU HIỆN TẠI?')) {
+                            staffData = importedData.staffData;
+                            bookings = importedData.bookings;
+                            
+                            // Đảm bảo có đủ 50 nhân viên
+                            if (staffData.length < 50) {
+                                const missingCount = 50 - staffData.length;
+                                for (let i = 0; i < missingCount; i++) {
+                                    const newId = staffData.length + 1;
+                                    const staffNum = newId.toString().padStart(3, '0');
+                                    staffData.push({
+                                        id: newId,
+                                        code: `NV${staffNum}`,
+                                        displayName: `NHÂN VIÊN ${staffNum}`,
+                                        customName: `NV${staffNum}`,
+                                        bookingsAssigned: [],
+                                        roomsAssigned: [],
+                                        offDays: [],
+                                        isAvailableToday: true,
+                                        currentAssignments: []
+                                    });
+                                }
+                            }
+                            
+                            saveDataToStorage();
+                            updateAllUI();
+                            showAlert('dataAlert', 'ĐÃ NHẬP DỮ LIỆU THÀNH CÔNG!', 'success');
+                        }
+                    } else if (Array.isArray(importedData)) {
+                        // Nhập danh sách booking
+                        if (confirm('BẠN CÓ MUỐN THÊM DANH SÁCH BOOKING NÀY VÀO DỮ LIỆU HIỆN TẠI?')) {
+                            importedData.forEach(booking => {
+                                if (!bookings.find(b => b.id === booking.id)) {
+                                    bookings.push(booking);
+                                }
+                            });
+                            
+                            saveDataToStorage();
+                            updateAllUI();
+                            showAlert('dataAlert', 'ĐÃ NHẬP BOOKING THÀNH CÔNG!', 'success');
+                        }
+                    } else {
+                        showAlert('dataAlert', 'ĐỊNH DẠNG FILE KHÔNG HỢP LỆ!', 'danger');
+                    }
+                } catch (error) {
+                    showAlert('dataAlert', 'LỖI KHI ĐỌC FILE: ' + error.message, 'danger');
+                }
+            };
+            
+            reader.readAsText(file);
+        }
+        
+        // Cập nhật thông tin dữ liệu
+        function updateDataInfo() {
+            const today = new Date().toISOString().split('T')[0];
+            const todayBookings = bookings.filter(booking => booking.date === today).length;
+            
+            // Đếm nhân viên đã được phân công
+            let assignedStaffCount = 0;
+            staffData.forEach(staff => {
+                if (staff.bookingsAssigned.length > 0) {
+                    assignedStaffCount++;
+                }
+            });
+            
+            // Tính dung lượng lưu trữ
+            const dataSize = JSON.stringify({staffData, bookings}).length;
+            const storageSize = (dataSize / 1024).toFixed(2);
+            
+            // Lấy thời gian lưu cuối
+            const savedData = localStorage.getItem('bookingAppData');
+            let lastSaved = 'Chưa lưu';
+            if (savedData) {
+                try {
+                    const data = JSON.parse(savedData);
+                    if (data.lastSaved) {
+                        const lastSavedDate = new Date(data.lastSaved);
+                        lastSaved = lastSavedDate.toLocaleString('vi-VN');
+                    }
+                } catch (e) {
+                    // Bỏ qua lỗi
+                }
+            }
+            
+            document.getElementById('totalBookingsCount').textContent = bookings.length;
+            document.getElementById('todayBookingsCount').textContent = todayBookings;
+            document.getElementById('assignedStaffCount').textContent = assignedStaffCount;
+            document.getElementById('storageSize').textContent = `${storageSize} KB`;
+            document.getElementById('lastSaved').textContent = lastSaved;
+        }
+        
+        // Cập nhật tất cả giao diện
+        function updateAllUI() {
+            updateTodayBookingsList();
+            updateBookingSelect();
+            updateCurrentToursList();
+            updateFutureBookingsList('upcoming');
+            updateStaffSelect();
+            updateTodayOffStaffList();
+            updateOffScheduleTable();
+            updateStatistics();
+        }
+        
+        // ==================== CHỨC NĂNG CHÍNH ====================
+        
         // Chuyển đổi tab chính
         document.querySelectorAll('.tab-button').forEach(button => {
             button.addEventListener('click', () => {
                 const tabId = button.getAttribute('data-tab');
                 
-                // Ẩn tất cả các tab
                 document.querySelectorAll('.tab-content').forEach(content => {
                     content.classList.remove('active');
                 });
                 
-                // Bỏ active tất cả các nút tab
                 document.querySelectorAll('.tab-button').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 
-                // Hiển thị tab được chọn
                 document.getElementById(tabId).classList.add('active');
                 button.classList.add('active');
                 
-                // Nếu là tab thống kê, cập nhật dữ liệu
-                if (tabId === 'statistics') {
-                    updateStatistics();
+                // Xử lý theo từng tab
+                switch(tabId) {
+                    case 'statistics':
+                        updateStatistics();
+                        break;
+                    case 'room-assignment':
+                        updateBookingSelect();
+                        break;
+                    case 'booking':
+                        updateTodayBookingsList();
+                        break;
+                    case 'current-tours':
+                        updateCurrentToursList();
+                        break;
+                    case 'future-bookings':
+                        updateFutureBookingsList('upcoming');
+                        break;
+                    case 'staff-off':
+                        updateStaffSelect();
+                        updateTodayOffStaffList();
+                        updateOffScheduleTable();
+                        break;
+                    case 'data-management':
+                        updateDataInfo();
+                        break;
                 }
                 
-                // Nếu là tab chia phòng, cập nhật danh sách booking
-                if (tabId === 'room-assignment') {
-                    updateBookingSelect();
-                }
-                
-                // Nếu là tab booking, cập nhật danh sách booking hôm nay
-                if (tabId === 'booking') {
-                    updateTodayBookingsList();
-                }
-                
-                // Nếu là tab booking tương lai
-                if (tabId === 'future-bookings') {
-                    showSubTabFuture('upcoming');
-                    updateFutureBookingsList('upcoming');
-                }
-                
-                // Nếu là tab nhân viên off
-                if (tabId === 'staff-off') {
-                    updateStaffSelect();
-                    updateTodayOffStaffList();
-                    updateOffScheduleTable();
-                }
-                
-                // Xóa tất cả thông báo khi chuyển tab
                 clearAllAlerts();
             });
         });
@@ -1132,15 +1631,11 @@
             button.addEventListener('click', () => {
                 const subtabId = button.getAttribute('data-subtab');
                 
-                // Bỏ active tất cả các nút subtab
                 document.querySelectorAll('.submenu-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 
-                // Active nút được chọn
                 button.classList.add('active');
-                
-                // Cập nhật danh sách booking theo subtab
                 updateFutureBookingsList(subtabId);
             });
         });
@@ -1153,7 +1648,6 @@
                     this.value = this.value.toUpperCase();
                 });
                 
-                // Cũng chuyển đổi giá trị hiện tại
                 if (input.value) {
                     input.value = input.value.toUpperCase();
                 }
@@ -1174,7 +1668,6 @@
                 return;
             }
             
-            // Kiểm tra ngày không được nhỏ hơn hôm nay
             const today = new Date().toISOString().split('T')[0];
             if (tourDate < today) {
                 showAlert('bookingAlert', 'NGÀY BOOKING KHÔNG ĐƯỢC NHỎ HƠN NGÀY HÔM NAY!', 'danger');
@@ -1196,22 +1689,18 @@
                 durationMinutes: parseInt(durationMinutes),
                 customers: parseInt(customerCount),
                 notes: tourNotes.toUpperCase(),
-                status: 'chua_phan_phong', // chua_phan_phong, dang_phan_phong, hoan_thanh
-                rooms: [], // Mảng chứa các phòng đã phân công
-                assignedStaff: [] // Mảng chứa các nhân viên đã phân công
+                status: 'chua_phan_phong',
+                rooms: [],
+                assignedStaff: []
             };
             
             bookings.push(booking);
             showAlert('bookingAlert', `ĐÃ LƯU BOOKING "${tourName.toUpperCase()}" THÀNH CÔNG!`, 'success');
             
-            // Cập nhật giao diện
-            updateTodayBookingsList();
-            updateBookingSelect();
-            updateFutureBookingsList('upcoming');
-            updateStatistics();
+            // Lưu dữ liệu
+            saveDataToStorage();
             
-            // KHÔNG xóa form để người dùng có thể tiếp tục nhập
-            // Chỉ xóa khi người dùng nhấn nút "Xóa Form"
+            updateAllUI();
         });
         
         document.getElementById('clearBookingBtn').addEventListener('click', () => {
@@ -1229,14 +1718,12 @@
         }
         
         // Tab 2: Chia phòng
-        let selectedBookingId = null;
         
         // Cập nhật dropdown chọn booking
         function updateBookingSelect() {
             const selectBooking = document.getElementById('selectBooking');
             selectBooking.innerHTML = '<option value="">-- CHỌN BOOKING ĐỂ CHIA PHÒNG --</option>';
             
-            // Lọc các booking chưa hoàn thành việc phân phòng
             const today = new Date().toISOString().split('T')[0];
             const availableBookings = bookings.filter(booking => 
                 booking.status !== 'hoan_thanh' && booking.date >= today
@@ -1269,7 +1756,6 @@
             const booking = bookings.find(b => b.id === bookingId);
             if (!booking) return;
             
-            // Hiển thị thông tin booking
             document.getElementById('selectedBookingName').textContent = booking.name;
             document.getElementById('selectedBookingCustomerCount').textContent = `${booking.customers} KHÁCH`;
             document.getElementById('selectedBookingDateTime').textContent = `${formatDate(booking.date)} ${booking.startTime} - ${booking.endTime}`;
@@ -1284,10 +1770,7 @@
             document.getElementById('bookingInfoBox').style.display = 'block';
             document.getElementById('roomAssignmentSection').style.display = 'block';
             
-            // Hiển thị các phòng đã phân công cho booking này
             updateBookingRoomsList(bookingId);
-            
-            // Xóa form chia phòng
             clearRoomForm();
         });
         
@@ -1300,128 +1783,194 @@
             
             const roomNumber = document.getElementById('roomNumber').value.trim().toUpperCase();
             const roomCapacity = parseInt(document.getElementById('roomCapacity').value);
-            const staffCodesInput = document.getElementById('staffCodes').value.trim();
+            const staffInput = document.getElementById('staffCodes').value.trim();
             const booking = bookings.find(b => b.id === selectedBookingId);
             
-            if (!roomNumber || !staffCodesInput) {
+            if (!roomNumber || !staffInput) {
                 showRoomAlert('VUI LÒNG ĐIỀN ĐẦY ĐỦ THÔNG TIN PHÒNG!', 'danger');
                 return;
             }
             
-            // Xử lý danh sách mã nhân viên
-            const staffCodes = staffCodesInput.split(',')
-                .map(code => code.trim().toUpperCase())
-                .filter(code => code);
+            const staffEntries = staffInput.split(',')
+                .map(entry => entry.trim().toUpperCase())
+                .filter(entry => entry);
             
-            if (staffCodes.length === 0) {
-                showRoomAlert('VUI LÒNG NHẬP ÍT NHẤT MỘT MÃ NHÂN VIÊN!', 'danger');
+            if (staffEntries.length === 0) {
+                showRoomAlert('VUI LÒNG NHẬP ÍT NHẤT MỘT NHÂN VIÊN!', 'danger');
                 return;
             }
             
-            if (staffCodes.length > roomCapacity) {
-                showRoomAlert(`SỐ NHÂN VIÊN (${staffCodes.length}) VƯỢT QUÁ SỨC CHỨA PHÒNG (${roomCapacity})!`, 'danger');
+            if (staffEntries.length > roomCapacity) {
+                showRoomAlert(`SỐ NHÂN VIÊN (${staffEntries.length}) VƯỢT QUÁ SỨC CHỨA PHÒNG (${roomCapacity})!`, 'danger');
                 return;
             }
             
-            // Kiểm tra xem phòng đã tồn tại trong booking chưa
             if (booking.rooms.some(room => room.number === roomNumber)) {
                 showRoomAlert(`PHÒNG ${roomNumber} ĐÃ TỒN TẠI TRONG BOOKING NÀY!`, 'danger');
                 return;
             }
             
-            // Kiểm tra nhân viên có tồn tại không và có bị trùng không
-            const validStaffCodes = [];
-            const invalidStaffCodes = [];
-            const duplicateStaffCodes = [];
-            const offStaffCodes = [];
+            const assignedStaffIds = [];
+            const assignedStaffNames = [];
+            const invalidStaffEntries = [];
+            const duplicateStaffEntries = [];
+            const offStaffEntries = [];
+            const scheduleConflictEntries = [];
             
-            const today = new Date().toISOString().split('T')[0];
+            const bookingDate = booking.date;
+            const bookingStartTime = booking.startTime;
+            const bookingEndTime = booking.endTime;
             
-            staffCodes.forEach(code => {
-                // Kiểm tra nhân viên có tồn tại không
-                const staff = staffData.find(s => s.code === code);
+            staffEntries.forEach(entry => {
+                let staff = staffData.find(s => 
+                    s.customName.toUpperCase() === entry || 
+                    s.code === entry ||
+                    s.displayName.toUpperCase().includes(entry)
+                );
+                
                 if (!staff) {
-                    invalidStaffCodes.push(code);
-                    return;
+                    staff = staffData.find(s => s.customName === s.code);
+                    if (staff) {
+                        staff.customName = entry;
+                    } else {
+                        invalidStaffEntries.push(entry);
+                        return;
+                    }
                 }
                 
-                // Kiểm tra nhân viên có off vào ngày của booking không
-                const bookingDate = booking.date;
                 const isOffOnBookingDate = staff.offDays.some(off => off.date === bookingDate);
                 if (isOffOnBookingDate) {
-                    offStaffCodes.push(code);
+                    offStaffEntries.push(`${entry} (${staff.customName})`);
                     return;
                 }
                 
-                // Kiểm tra nhân viên đã được phân công trong booking này chưa
-                if (booking.assignedStaff.includes(code)) {
-                    duplicateStaffCodes.push(code);
+                if (booking.assignedStaff.includes(staff.id)) {
+                    duplicateStaffEntries.push(`${entry} (${staff.customName})`);
                     return;
                 }
                 
-                validStaffCodes.push(code);
+                // KIỂM TRA TRÙNG LỊCH
+                let hasScheduleConflict = false;
+                let conflictDetails = '';
+                
+                staff.bookingsAssigned.forEach(assignedBookingId => {
+                    const assignedBooking = bookings.find(b => b.id === assignedBookingId);
+                    if (assignedBooking && assignedBooking.id !== booking.id) {
+                        if (assignedBooking.date === bookingDate) {
+                            const assignedStart = new Date(`${assignedBooking.date}T${assignedBooking.startTime}`);
+                            const assignedEnd = new Date(`${assignedBooking.date}T${assignedBooking.endTime}`);
+                            const newStart = new Date(`${bookingDate}T${bookingStartTime}`);
+                            const newEnd = new Date(`${bookingDate}T${bookingEndTime}`);
+                            
+                            if ((newStart >= assignedStart && newStart < assignedEnd) ||
+                                (newEnd > assignedStart && newEnd <= assignedEnd) ||
+                                (newStart <= assignedStart && newEnd >= assignedEnd)) {
+                                hasScheduleConflict = true;
+                                conflictDetails = `TRÙNG VỚI TOUR: ${assignedBooking.name} (${assignedBooking.startTime}-${assignedBooking.endTime})`;
+                            }
+                        }
+                    }
+                });
+                
+                if (hasScheduleConflict) {
+                    scheduleConflictEntries.push({
+                        staffName: staff.customName,
+                        conflictDetails: conflictDetails
+                    });
+                    return;
+                }
+                
+                assignedStaffIds.push(staff.id);
+                assignedStaffNames.push(staff.customName);
             });
             
             // Hiển thị cảnh báo
             let warningMessages = [];
-            if (invalidStaffCodes.length > 0) {
-                warningMessages.push(`MÃ NV KHÔNG HỢP LỆ: ${invalidStaffCodes.join(', ')}`);
+            if (invalidStaffEntries.length > 0) {
+                warningMessages.push(`KHÔNG TÌM THẤY: ${invalidStaffEntries.join(', ')}`);
             }
-            if (duplicateStaffCodes.length > 0) {
-                warningMessages.push(`NV ĐÃ PHÂN CÔNG: ${duplicateStaffCodes.join(', ')}`);
+            if (duplicateStaffEntries.length > 0) {
+                warningMessages.push(`ĐÃ PHÂN CÔNG: ${duplicateStaffEntries.join(', ')}`);
             }
-            if (offStaffCodes.length > 0) {
-                warningMessages.push(`NV OFF VÀO NGÀY ${formatDate(booking.date)}: ${offStaffCodes.join(', ')}`);
+            if (offStaffEntries.length > 0) {
+                warningMessages.push(`OFF NGÀY ${formatDate(bookingDate)}: ${offStaffEntries.join(', ')}`);
+            }
+            if (scheduleConflictEntries.length > 0) {
+                const conflictNames = scheduleConflictEntries.map(c => c.staffName).join(', ');
+                warningMessages.push(`TRÙNG LỊCH: ${conflictNames}`);
             }
             
             if (warningMessages.length > 0) {
-                showRoomAlert(warningMessages.join(' | '), 'warning');
+                let alertHTML = warningMessages.join('<br>');
+                
+                if (scheduleConflictEntries.length > 0) {
+                    alertHTML += '<div class="schedule-conflict" style="margin-top: 10px;">';
+                    alertHTML += '<strong><i class="fas fa-exclamation-triangle"></i> CHI TIẾT TRÙNG LỊCH:</strong><br>';
+                    scheduleConflictEntries.forEach(conflict => {
+                        alertHTML += `• ${conflict.staffName}: ${conflict.conflictDetails}<br>`;
+                    });
+                    alertHTML += '</div>';
+                }
+                
+                const shouldContinue = confirm(`CÓ ${scheduleConflictEntries.length} NHÂN VIÊN BỊ TRÙNG LỊCH.\nBẠN CÓ MUỐN TIẾP TỤC PHÂN CÔNG KHÔNG?`);
+                if (!shouldContinue) {
+                    return;
+                }
             }
             
-            // Nếu không có nhân viên hợp lệ nào
-            if (validStaffCodes.length === 0) {
+            if (assignedStaffIds.length === 0) {
                 showRoomAlert('KHÔNG CÓ NHÂN VIÊN HỢP LỆ ĐỂ PHÂN CÔNG!', 'danger');
                 return;
             }
             
-            // Tạo phòng mới
             const room = {
                 id: Date.now(),
                 number: roomNumber,
                 capacity: roomCapacity,
-                staffCodes: validStaffCodes,
+                staffIds: assignedStaffIds,
+                staffNames: assignedStaffNames,
                 bookingId: selectedBookingId,
                 bookingName: booking.name
             };
             
-            // Thêm phòng vào booking
             booking.rooms.push(room);
             
-            // Thêm nhân viên vào danh sách đã phân công của booking
-            validStaffCodes.forEach(code => {
-                if (!booking.assignedStaff.includes(code)) {
-                    booking.assignedStaff.push(code);
+            assignedStaffIds.forEach(staffId => {
+                if (!booking.assignedStaff.includes(staffId)) {
+                    booking.assignedStaff.push(staffId);
                 }
                 
-                // Cập nhật thông tin nhân viên
-                const staff = staffData.find(s => s.code === code);
+                const staff = staffData.find(s => s.id === staffId);
                 if (staff) {
                     if (!staff.bookingsAssigned.includes(booking.id)) {
                         staff.bookingsAssigned.push(booking.id);
                     }
                     staff.roomsAssigned.push(`${roomNumber} (${booking.name})`);
+                    
+                    // Cập nhật assignment hiện tại nếu tour đang diễn ra
+                    const now = new Date();
+                    const bookingDateTime = new Date(`${booking.date}T${booking.startTime}`);
+                    const bookingEndDateTime = new Date(`${booking.date}T${booking.endTime}`);
+                    
+                    if (now >= bookingDateTime && now <= bookingEndDateTime) {
+                        if (!staff.currentAssignments.includes(booking.id)) {
+                            staff.currentAssignments.push(booking.id);
+                        }
+                    }
                 }
             });
             
-            // Cập nhật trạng thái booking
             updateBookingStatus(booking);
             
-            showRoomAlert(`ĐÃ THÊM PHÒNG ${roomNumber} VỚI ${validStaffCodes.length} NHÂN VIÊN`, 'success');
+            showRoomAlert(`ĐÃ THÊM PHÒNG ${roomNumber} VỚI ${assignedStaffIds.length} NHÂN VIÊN`, 'success');
             
-            // Cập nhật giao diện
+            // Lưu dữ liệu
+            saveDataToStorage();
+            
             updateBookingRoomsList(selectedBookingId);
             clearRoomForm();
             updateStatistics();
+            updateCurrentToursList();
         });
         
         // Tự động chia phòng
@@ -1434,48 +1983,109 @@
             const booking = bookings.find(b => b.id === selectedBookingId);
             if (!booking) return;
             
-            // Tính số lượng nhân viên cần thiết (giả sử mỗi khách cần 1 nhân viên)
             const staffNeeded = booking.customers;
+            const bookingDate = booking.date;
+            const bookingStart = booking.startTime;
+            const bookingEnd = booking.endTime;
             
-            // Lấy danh sách nhân viên chưa được phân công trong booking này và không off vào ngày booking
-            const availableStaff = staffData.filter(staff => 
-                !booking.assignedStaff.includes(staff.code) &&
-                !staff.offDays.some(off => off.date === booking.date)
-            ).slice(0, staffNeeded); // Chỉ lấy số lượng cần thiết
+            // Lọc nhân viên CÓ THỂ phân công
+            let availableStaff = [];
+            
+            staffData.forEach(staff => {
+                // 1. Kiểm tra nhân viên đã được phân công cho booking này chưa
+                if (booking.assignedStaff.includes(staff.id)) {
+                    return;
+                }
+                
+                // 2. Kiểm tra nhân viên có OFF vào ngày này không
+                const isOff = staff.offDays.some(off => off.date === bookingDate);
+                if (isOff) {
+                    return;
+                }
+                
+                // 3. Kiểm tra TRÙNG LỊCH với các booking khác
+                let hasScheduleConflict = false;
+                
+                staff.bookingsAssigned.forEach(assignedBookingId => {
+                    const assignedBooking = bookings.find(b => b.id === assignedBookingId);
+                    if (assignedBooking && assignedBooking.id !== booking.id) {
+                        // Kiểm tra nếu cùng ngày
+                        if (assignedBooking.date === bookingDate) {
+                            const assignedStart = new Date(`${assignedBooking.date}T${assignedBooking.startTime}`);
+                            const assignedEnd = new Date(`${assignedBooking.date}T${assignedBooking.endTime}`);
+                            const newStart = new Date(`${bookingDate}T${bookingStart}`);
+                            const newEnd = new Date(`${bookingDate}T${bookingEnd}`);
+                            
+                            // Kiểm tra khoảng thời gian có trùng nhau không
+                            if ((newStart >= assignedStart && newStart < assignedEnd) ||
+                                (newEnd > assignedStart && newEnd <= assignedEnd) ||
+                                (newStart <= assignedStart && newEnd >= assignedEnd)) {
+                                hasScheduleConflict = true;
+                            }
+                        }
+                    }
+                });
+                
+                if (hasScheduleConflict) {
+                    return;
+                }
+                
+                // 4. Tính số lượng booking nhân viên đã có trong ngày
+                const bookingsCountToday = staff.bookingsAssigned.filter(bookingId => {
+                    const b = bookings.find(book => book.id === bookingId);
+                    return b && b.date === bookingDate;
+                }).length;
+                
+                // Nhân viên hợp lệ
+                availableStaff.push({
+                    ...staff,
+                    bookingsCountToday: bookingsCountToday
+                });
+            });
+            
+            // Sắp xếp ưu tiên nhân viên có ÍT booking trong ngày nhất
+            availableStaff.sort((a, b) => a.bookingsCountToday - b.bookingsCountToday);
             
             if (availableStaff.length < staffNeeded) {
                 showRoomAlert(`KHÔNG ĐỦ NHÂN VIÊN! CẦN ${staffNeeded}, CHỈ CÓ ${availableStaff.length} NHÂN VIÊN CÓ SẴN.`, 'warning');
+                
+                // Vẫn chia số nhân viên có sẵn
+                if (availableStaff.length === 0) {
+                    showRoomAlert('KHÔNG CÓ NHÂN VIÊN NÀO CÓ THỂ PHÂN CÔNG!', 'danger');
+                    return;
+                }
             }
             
-            // Tự động chia vào các phòng (mặc định phòng 5 người)
+            // Chia thành các phòng (mỗi phòng tối đa 5 người)
             const roomCapacity = 5;
-            let roomCounter = 1;
+            let roomCounter = booking.rooms.length + 1;
+            let assignedCount = 0;
+            let roomsAdded = 0;
             
-            for (let i = 0; i < availableStaff.length; i += roomCapacity) {
-                const roomStaff = availableStaff.slice(i, i + roomCapacity);
-                const staffCodes = roomStaff.map(staff => staff.code);
+            for (let i = 0; i < Math.min(availableStaff.length, staffNeeded); i += roomCapacity) {
+                const roomStaff = availableStaff.slice(i, Math.min(i + roomCapacity, staffNeeded));
+                const staffIds = roomStaff.map(staff => staff.id);
+                const staffNames = roomStaff.map(staff => staff.customName);
                 
-                // Tạo phòng
                 const room = {
                     id: Date.now() + i,
-                    number: `P${(booking.rooms.length + roomCounter).toString().padStart(3, '0')}`,
+                    number: `P${(roomCounter).toString().padStart(3, '0')}`,
                     capacity: roomCapacity,
-                    staffCodes: staffCodes,
+                    staffIds: staffIds,
+                    staffNames: staffNames,
                     bookingId: selectedBookingId,
                     bookingName: booking.name
                 };
                 
-                // Thêm phòng vào booking
                 booking.rooms.push(room);
                 
-                // Thêm nhân viên vào danh sách đã phân công của booking
-                staffCodes.forEach(code => {
-                    if (!booking.assignedStaff.includes(code)) {
-                        booking.assignedStaff.push(code);
+                staffIds.forEach(staffId => {
+                    if (!booking.assignedStaff.includes(staffId)) {
+                        booking.assignedStaff.push(staffId);
+                        assignedCount++;
                     }
                     
-                    // Cập nhật thông tin nhân viên
-                    const staff = staffData.find(s => s.code === code);
+                    const staff = staffData.find(s => s.id === staffId);
                     if (staff) {
                         if (!staff.bookingsAssigned.includes(booking.id)) {
                             staff.bookingsAssigned.push(booking.id);
@@ -1485,17 +2095,26 @@
                 });
                 
                 roomCounter++;
+                roomsAdded++;
             }
             
-            // Cập nhật trạng thái booking
             updateBookingStatus(booking);
             
-            showRoomAlert(`ĐÃ TỰ ĐỘNG CHIA ${availableStaff.length} NHÂN VIÊN VÀO ${Math.ceil(availableStaff.length / roomCapacity)} PHÒNG`, 'success');
+            let alertMessage = `ĐÃ TỰ ĐỘNG CHIA ${assignedCount} NHÂN VIÊN VÀO ${roomsAdded} PHÒNG`;
             
-            // Cập nhật giao diện
+            if (assignedCount < staffNeeded) {
+                alertMessage += ` (THIẾU ${staffNeeded - assignedCount} NHÂN VIÊN)`;
+            }
+            
+            showRoomAlert(alertMessage, assignedCount >= staffNeeded ? 'success' : 'warning');
+            
+            // Lưu dữ liệu
+            saveDataToStorage();
+            
             updateBookingRoomsList(selectedBookingId);
             clearRoomForm();
             updateStatistics();
+            updateCurrentToursList();
         });
         
         // Đánh dấu hoàn thành booking
@@ -1515,12 +2134,27 @@
             }
             
             booking.status = 'hoan_thanh';
+            
+            // Xóa assignment hiện tại của nhân viên
+            booking.assignedStaff.forEach(staffId => {
+                const staff = staffData.find(s => s.id === staffId);
+                if (staff) {
+                    const index = staff.currentAssignments.indexOf(booking.id);
+                    if (index !== -1) {
+                        staff.currentAssignments.splice(index, 1);
+                    }
+                }
+            });
+            
             showRoomAlert(`ĐÃ ĐÁNH DẤU BOOKING "${booking.name}" HOÀN THÀNH!`, 'success');
             
-            // Cập nhật giao diện
+            // Lưu dữ liệu
+            saveDataToStorage();
+            
             updateBookingRoomsList(selectedBookingId);
             updateBookingSelect();
             updateFutureBookingsList('upcoming');
+            updateCurrentToursList();
             updateStatistics();
         });
         
@@ -1536,8 +2170,8 @@
         document.getElementById('staffCodes').addEventListener('input', function() {
             if (!selectedBookingId) return;
             
-            const staffCodesInput = this.value.trim();
-            if (!staffCodesInput) {
+            const staffInput = this.value.trim();
+            if (!staffInput) {
                 document.getElementById('duplicateWarning').style.display = 'none';
                 return;
             }
@@ -1545,15 +2179,21 @@
             const booking = bookings.find(b => b.id === selectedBookingId);
             if (!booking) return;
             
-            const staffCodes = staffCodesInput.split(',')
-                .map(code => code.trim().toUpperCase())
-                .filter(code => code);
+            const staffEntries = staffInput.split(',')
+                .map(entry => entry.trim().toUpperCase())
+                .filter(entry => entry);
             
             const duplicates = [];
             
-            staffCodes.forEach(code => {
-                if (booking.assignedStaff.includes(code)) {
-                    duplicates.push(code);
+            staffEntries.forEach(entry => {
+                const staff = staffData.find(s => 
+                    s.customName.toUpperCase() === entry || 
+                    s.code === entry ||
+                    s.displayName.toUpperCase().includes(entry)
+                );
+                
+                if (staff && booking.assignedStaff.includes(staff.id)) {
+                    duplicates.push(entry);
                 }
             });
             
@@ -1589,13 +2229,11 @@
                 const roomElement = document.createElement('div');
                 roomElement.className = 'room-card';
                 
-                // Tạo danh sách nhân viên trong phòng
                 let staffListHTML = '';
-                room.staffCodes.forEach(code => {
-                    const staff = staffData.find(s => s.code === code);
+                room.staffNames.forEach(name => {
                     staffListHTML += `
                         <li>
-                            ${code} - ${staff ? staff.name : 'KHÔNG XÁC ĐỊNH'}
+                            ${name}
                         </li>
                     `;
                 });
@@ -1603,7 +2241,7 @@
                 roomElement.innerHTML = `
                     <div class="room-header">
                         <div class="room-title">PHÒNG ${room.number}</div>
-                        <div class="room-capacity">${room.staffCodes.length}/${room.capacity} NGƯỜI</div>
+                        <div class="room-capacity">${room.staffNames.length}/${room.capacity} NGƯỜI</div>
                     </div>
                     <div><strong><i class="fas fa-id-badge"></i> NHÂN VIÊN:</strong></div>
                     <ul class="staff-list">
@@ -1634,55 +2272,282 @@
             
             const room = booking.rooms[roomIndex];
             
-            // Xóa nhân viên khỏi danh sách đã phân công của booking
-            room.staffCodes.forEach(code => {
-                const staffIndex = booking.assignedStaff.indexOf(code);
+            room.staffIds.forEach(staffId => {
+                const staffIndex = booking.assignedStaff.indexOf(staffId);
                 if (staffIndex !== -1) {
                     booking.assignedStaff.splice(staffIndex, 1);
                 }
                 
-                // Cập nhật thông tin nhân viên
-                const staff = staffData.find(s => s.code === code);
+                const staff = staffData.find(s => s.id === staffId);
                 if (staff) {
-                    // Xóa booking khỏi danh sách booking của nhân viên
                     const bookingIndex = staff.bookingsAssigned.indexOf(bookingId);
                     if (bookingIndex !== -1) {
                         staff.bookingsAssigned.splice(bookingIndex, 1);
                     }
                     
-                    // Xóa phòng khỏi danh sách phòng của nhân viên
                     const roomAssignment = `${room.number} (${booking.name})`;
                     const roomIndex = staff.roomsAssigned.indexOf(roomAssignment);
                     if (roomIndex !== -1) {
                         staff.roomsAssigned.splice(roomIndex, 1);
                     }
+                    
+                    const currentAssignmentIndex = staff.currentAssignments.indexOf(bookingId);
+                    if (currentAssignmentIndex !== -1) {
+                        staff.currentAssignments.splice(currentAssignmentIndex, 1);
+                    }
                 }
             });
             
-            // Xóa phòng khỏi booking
             booking.rooms.splice(roomIndex, 1);
             
-            // Cập nhật trạng thái booking
             updateBookingStatus(booking);
             
             showRoomAlert(`ĐÃ XÓA PHÒNG ${room.number}`, 'warning');
             
-            // Cập nhật giao diện
+            // Lưu dữ liệu
+            saveDataToStorage();
+            
             updateBookingRoomsList(bookingId);
+            updateCurrentToursList();
             updateStatistics();
         };
         
-        // Tab 3: Booking tương lai
-        function showSubTabFuture(subtabId) {
-            // Bỏ active tất cả các nút subtab
-            document.querySelectorAll('.submenu-btn').forEach(btn => {
-                btn.classList.remove('active');
+        // Tab 3: TOUR ĐANG DIỄN RA
+        document.getElementById('refreshCurrentToursBtn').addEventListener('click', updateCurrentToursList);
+        document.getElementById('showAllCurrentToursBtn').addEventListener('click', () => {
+            document.getElementById('filterCurrentDate').value = '';
+            document.getElementById('filterCurrentTime').value = '';
+            updateCurrentToursList();
+        });
+        document.getElementById('showNowToursBtn').addEventListener('click', () => {
+            const now = new Date();
+            const today = now.toISOString().split('T')[0];
+            const currentTime = now.toTimeString().slice(0, 5);
+            
+            document.getElementById('filterCurrentDate').value = today;
+            document.getElementById('filterCurrentTime').value = currentTime;
+            updateCurrentToursList();
+        });
+        
+        // Hàm cập nhật danh sách tour đang diễn ra
+        function updateCurrentToursList() {
+            const currentToursList = document.getElementById('currentToursList');
+            
+            // Xóa phần hiển thị nhân viên đang làm việc
+            document.getElementById('currentStaffList').innerHTML = '';
+            
+            currentToursList.innerHTML = '';
+            
+            const filterDate = document.getElementById('filterCurrentDate').value;
+            const filterTime = document.getElementById('filterCurrentTime').value;
+            const now = new Date();
+            const today = now.toISOString().split('T')[0];
+            
+            let currentTours = [];
+            
+            // Lọc tour đang diễn ra
+            bookings.forEach(booking => {
+                const bookingDate = booking.date;
+                const bookingStart = new Date(`${bookingDate}T${booking.startTime}`);
+                const bookingEnd = new Date(`${bookingDate}T${booking.endTime}`);
+                
+                let isCurrent = false;
+                
+                if (filterDate && filterTime) {
+                    // Có cả ngày và giờ lọc
+                    const filterDateTime = new Date(`${filterDate}T${filterTime}`);
+                    isCurrent = (filterDateTime >= bookingStart && filterDateTime <= bookingEnd);
+                } else if (filterDate && !filterTime) {
+                    // Chỉ có ngày lọc
+                    isCurrent = (bookingDate === filterDate);
+                } else if (!filterDate && filterTime) {
+                    // Chỉ có giờ lọc
+                    const bookingStartTime = booking.startTime;
+                    const bookingEndTime = booking.endTime;
+                    isCurrent = (filterTime >= bookingStartTime && filterTime <= bookingEndTime && bookingDate >= today);
+                } else {
+                    // Không có bộ lọc - lấy tour đang diễn ra NGAY BÂY GIỜ
+                    isCurrent = (now >= bookingStart && now <= bookingEnd);
+                }
+                
+                if (isCurrent && booking.status !== 'hoan_thanh') {
+                    currentTours.push(booking);
+                }
             });
             
-            // Active nút được chọn
-            document.querySelector(`[data-subtab="${subtabId}"]`).classList.add('active');
+            // HIỂN THỊ DANH SÁCH TOUR
+            if (currentTours.length === 0) {
+                currentToursList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>KHÔNG CÓ TOUR NÀO ĐANG DIỄN RA</h3>
+                        <p>${filterDate ? `KHÔNG CÓ TOUR VÀO ${formatDate(filterDate)} ${filterTime ? 'LÚC ' + filterTime : ''}` : 'KHÔNG CÓ TOUR ĐANG HOẠT ĐỘNG'}</p>
+                        <p style="margin-top: 10px; font-size: 12px; color: #7f8c8d;">
+                            Tổng booking: ${bookings.length} | Booking hôm nay: ${bookings.filter(b => b.date === today).length}
+                        </p>
+                    </div>
+                `;
+            } else {
+                // Sắp xếp theo thời gian bắt đầu
+                currentTours.sort((a, b) => {
+                    const aTime = new Date(`${a.date}T${a.startTime}`);
+                    const bTime = new Date(`${b.date}T${b.startTime}`);
+                    return aTime - bTime;
+                });
+                
+                currentTours.forEach(booking => {
+                    const bookingElement = document.createElement('div');
+                    bookingElement.className = 'current-tour-card';
+                    
+                    const bookingStart = new Date(`${booking.date}T${booking.startTime}`);
+                    const bookingEnd = new Date(`${booking.date}T${booking.endTime}`);
+                    
+                    // Tính thời gian còn lại
+                    let timeStatus = '';
+                    let timeColor = '';
+                    let statusIcon = '';
+                    
+                    if (now >= bookingStart && now <= bookingEnd) {
+                        const timeRemaining = Math.round((bookingEnd - now) / 60000);
+                        timeStatus = `ĐANG DIỄN RA - Còn ${timeRemaining} phút`;
+                        timeColor = '#4CAF50';
+                        statusIcon = '🟢';
+                    } else if (now < bookingStart) {
+                        const minutesUntilStart = Math.round((bookingStart - now) / 60000);
+                        timeStatus = `SẮP BẮT ĐẦU - Còn ${minutesUntilStart} phút`;
+                        timeColor = '#FF9800';
+                        statusIcon = '🟡';
+                    } else {
+                        timeStatus = `ĐÃ KẾT THÚC`;
+                        timeColor = '#9E9E9E';
+                        statusIcon = '🔴';
+                    }
+                    
+                    // HIỂN THỊ THÔNG TIN TOUR VÀ PHÒNG
+                    let roomsHTML = '';
+                    
+                    if (booking.rooms.length === 0) {
+                        roomsHTML = `
+                            <div style="background-color: #fff8e1; padding: 10px; border-radius: 5px; margin: 10px 0; border-left: 4px solid #ff9800;">
+                                <i class="fas fa-exclamation-triangle"></i> CHƯA PHÂN PHÒNG
+                            </div>
+                        `;
+                    } else {
+                        // HIỂN THỊ TỪNG PHÒNG VÀ NHÂN VIÊN TRONG PHÒNG
+                        booking.rooms.forEach(room => {
+                            let staffListHTML = '';
+                            
+                            if (room.staffNames && room.staffNames.length > 0) {
+                                staffListHTML = room.staffNames.map(staffName => 
+                                    `<div style="margin: 3px 0; padding: 3px 8px; background-color: #e3f2fd; border-radius: 3px; display: inline-block; margin-right: 5px; font-size: 13px;">
+                                        ${staffName}
+                                    </div>`
+                                ).join('');
+                            } else {
+                                staffListHTML = '<div style="color: #999; font-style: italic; font-size: 13px;">Chưa có nhân viên</div>';
+                            }
+                            
+                            roomsHTML += `
+                                <div class="room-card" style="margin-bottom: 15px; padding: 12px; background-color: white; border-radius: 5px; border: 1px solid #e0e0e0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                        <div style="display: flex; align-items: center;">
+                                            <i class="fas fa-door-closed" style="color: #795548; margin-right: 8px;"></i>
+                                            <strong style="color: #2196F3; font-size: 15px;">PHÒNG ${room.number}</strong>
+                                        </div>
+                                        <span style="background-color: #4CAF50; color: white; padding: 3px 10px; border-radius: 15px; font-size: 12px; font-weight: bold;">
+                                            ${room.staffNames ? room.staffNames.length : 0}/${room.capacity} NV
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 13px; margin-bottom: 5px; color: #666;"><strong>Nhân viên trong phòng:</strong></div>
+                                        <div style="display: flex; flex-wrap: wrap; gap: 5px;">${staffListHTML}</div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+                    
+                    // Đếm tổng số nhân viên đã phân
+                    let totalAssignedStaff = 0;
+                    booking.rooms.forEach(room => {
+                        totalAssignedStaff += (room.staffNames ? room.staffNames.length : 0);
+                    });
+                    
+                    bookingElement.innerHTML = `
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; color: #2c3e50; font-size: 18px;">${booking.name}</h4>
+                                    <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #666;">
+                                        <span><i class="fas fa-calendar-day"></i> ${formatDate(booking.date)}</span>
+                                        <span><i class="fas fa-clock"></i> ${booking.startTime} - ${booking.endTime}</span>
+                                        <span style="color: ${timeColor}; font-weight: bold;">${statusIcon} ${timeStatus}</span>
+                                    </div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="background-color: #f0f7ff; padding: 5px 12px; border-radius: 20px; font-weight: bold; color: #1565C0;">
+                                        ${booking.customers} KHÁCH
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="background-color: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; font-size: 14px;">
+                                    <div>
+                                        <div style="color: #666; font-size: 12px;">THỜI LƯỢNG</div>
+                                        <div style="font-weight: bold;">${booking.durationMinutes} phút</div>
+                                    </div>
+                                    <div>
+                                        <div style="color: #666; font-size: 12px;">TỔNG PHÒNG</div>
+                                        <div style="font-weight: bold;">${booking.rooms.length} phòng</div>
+                                    </div>
+                                    <div>
+                                        <div style="color: #666; font-size: 12px;">NV ĐÃ PHÂN</div>
+                                        <div style="font-weight: bold;">${totalAssignedStaff}/${booking.customers} NV</div>
+                                    </div>
+                                    <div>
+                                        <div style="color: #666; font-size: 12px;">TRẠNG THÁI</div>
+                                        <div><span class="badge ${getStatusClass(booking.status)}">${getStatusText(booking.status)}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin: 20px 0 15px 0;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                                    <div style="display: flex; align-items: center;">
+                                        <i class="fas fa-hotel" style="color: #795548; margin-right: 8px; font-size: 16px;"></i>
+                                        <h5 style="margin: 0; color: #333; font-size: 16px;">DANH SÁCH PHÒNG</h5>
+                                    </div>
+                                    <span style="background-color: #e3f2fd; color: #1565C0; padding: 3px 12px; border-radius: 15px; font-size: 13px; font-weight: bold;">
+                                        ${booking.rooms.length} PHÒNG
+                                    </span>
+                                </div>
+                                
+                                ${roomsHTML}
+                            </div>
+                            
+                            <div style="margin-top: 20px; padding-top: 15px; border-top: 2px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+                                <div style="font-size: 13px; color: #666;">
+                                    <i class="fas fa-sticky-note"></i> ${booking.notes || 'Không có ghi chú'}
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="selectBookingForAssignment(${booking.id})" style="padding: 8px 16px; font-size: 14px; margin-right: 5px;">
+                                        <i class="fas fa-door-open"></i> CHIA PHÒNG
+                                    </button>
+                                    <button class="btn btn-delete-sm" onclick="showDeleteBookingModal(${booking.id})" style="padding: 8px 16px; font-size: 14px; background-color: #e74c3c;">
+                                        <i class="fas fa-trash"></i> XÓA
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    currentToursList.appendChild(bookingElement);
+                });
+            }
         }
         
+        // Tab 4: Booking tương lai
         function updateFutureBookingsList(filterType = 'upcoming') {
             const futureBookingsList = document.getElementById('futureBookingsList');
             futureBookingsList.innerHTML = '';
@@ -1690,10 +2555,8 @@
             const today = new Date().toISOString().split('T')[0];
             let filteredBookings = [];
             
-            // Lọc booking theo loại
             switch(filterType) {
                 case 'upcoming':
-                    // Booking từ ngày mai trở đi
                     const tomorrow = new Date();
                     tomorrow.setDate(tomorrow.getDate() + 1);
                     const tomorrowStr = tomorrow.toISOString().split('T')[0];
@@ -1701,7 +2564,6 @@
                     break;
                     
                 case 'this-week':
-                    // Booking trong tuần này
                     const startOfWeek = getStartOfWeek();
                     const endOfWeek = getEndOfWeek();
                     filteredBookings = bookings.filter(booking => 
@@ -1710,7 +2572,6 @@
                     break;
                     
                 case 'next-week':
-                    // Booking tuần sau
                     const startOfNextWeek = getStartOfNextWeek();
                     const endOfNextWeek = getEndOfNextWeek();
                     filteredBookings = bookings.filter(booking => 
@@ -1719,24 +2580,20 @@
                     break;
                     
                 case 'all-future':
-                    // Tất cả booking tương lai
                     filteredBookings = bookings.filter(booking => booking.date > today);
                     break;
             }
             
-            // Áp dụng bộ lọc ngày nếu có
             const filterDate = document.getElementById('filterDate').value;
             if (filterDate) {
                 filteredBookings = filteredBookings.filter(booking => booking.date === filterDate);
             }
             
-            // Áp dụng bộ lọc trạng thái nếu có
             const filterStatus = document.getElementById('filterStatus').value;
             if (filterStatus !== 'all') {
                 filteredBookings = filteredBookings.filter(booking => booking.status === filterStatus);
             }
             
-            // Sắp xếp theo ngày
             filteredBookings.sort((a, b) => new Date(a.date) - new Date(b.date));
             
             if (filteredBookings.length === 0) {
@@ -1754,7 +2611,6 @@
                 const bookingElement = document.createElement('div');
                 bookingElement.className = 'booking-card';
                 
-                // Xác định class CSS dựa trên ngày booking
                 let dateClass = 'booking-status-future';
                 if (booking.date === today) {
                     dateClass = 'booking-status-today';
@@ -1763,47 +2619,30 @@
                 }
                 bookingElement.classList.add(dateClass);
                 
-                bookingElement.innerHTML = `
-                    <div class="booking-header">
-                        <div class="booking-title">${booking.name}</div>
-                        <div class="booking-customer-count">${booking.customers} KHÁCH</div>
-                    </div>
-                    <div class="booking-details">
-                        <div class="detail-row">
-                            <div class="detail-label">NGÀY:</div>
-                            <div class="detail-value">${formatDate(booking.date)} (${getDayOfWeek(booking.date)})</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">THỜI GIAN:</div>
-                            <div class="detail-value">${booking.startTime} - ${booking.endTime}</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">THỜI LƯỢNG:</div>
-                            <div class="detail-value">${booking.durationMinutes} PHÚT</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">TRẠNG THÁI:</div>
-                            <div class="detail-value"><span class="badge ${getStatusClass(booking.status)}">${getStatusText(booking.status)}</span></div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">PHÒNG:</div>
-                            <div class="detail-value">${booking.rooms.length} PHÒNG</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">NV ĐÃ PHÂN:</div>
-                            <div class="detail-value">${booking.assignedStaff.length} NHÂN VIÊN</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">GHI CHÚ:</div>
-                            <div class="detail-value">${booking.notes || 'KHÔNG CÓ'}</div>
-                        </div>
-                    </div>
-                    <div style="margin-top: 15px;">
-                        <button class="btn btn-secondary" onclick="selectBookingForAssignment(${booking.id})" style="width: 100%;">
-                            <i class="fas fa-door-open"></i> CHIA PHÒNG CHO BOOKING NÀY
-                        </button>
-                    </div>
+                // Thêm nút xóa booking
+                const deleteButton = `
+                    <button class="btn-delete-booking" onclick="showDeleteBookingModal(${booking.id})">
+                        <i class="fas fa-trash"></i> XÓA
+                    </button>
                 `;
+                
+                bookingElement.innerHTML = `
+    <div class="booking-header">
+        <div class="booking-title">${booking.name}</div>
+        <div class="booking-customer-count">${booking.customers} KHÁCH</div>
+    </div>
+    <div class="booking-details">
+        <!-- ... các detail rows ... -->
+    </div>
+    <div style="margin-top: 15px;">
+        <button class="btn btn-secondary" onclick="selectBookingForAssignment(${booking.id})" style="width: 100%; margin-bottom: 5px;">
+            <i class="fas fa-door-open"></i> CHIA PHÒNG CHO BOOKING NÀY
+        </button>
+        <button class="btn-delete-booking" onclick="showDeleteBookingModal(${booking.id})" style="width: 100%;">
+            <i class="fas fa-trash"></i> XÓA BOOKING
+        </button>
+    </div>
+`;
                 
                 futureBookingsList.appendChild(bookingElement);
             });
@@ -1828,98 +2667,93 @@
             }
         });
         
-        // Tab 4: Quản lý nhân viên off
+        // Tab 5: Quản lý nhân viên off
         function updateStaffSelect() {
             const staffSelect = document.getElementById('staffSelect');
             staffSelect.innerHTML = '<option value="">-- CHỌN NHÂN VIÊN --</option>';
             
             staffData.forEach(staff => {
                 const option = document.createElement('option');
-                option.value = staff.code;
-                option.textContent = `${staff.code} - ${staff.name}`;
+                option.value = staff.id;
+                option.textContent = `${staff.customName} - ${staff.displayName}`;
                 staffSelect.appendChild(option);
             });
         }
         
         // Đánh dấu nhân viên off
         document.getElementById('markOffBtn').addEventListener('click', () => {
-            const staffCode = document.getElementById('staffSelect').value;
+            const staffId = parseInt(document.getElementById('staffSelect').value);
             const offDate = document.getElementById('offDate').value;
             const offReason = document.getElementById('offReason').value.trim();
             
-            if (!staffCode || !offDate) {
+            if (!staffId || !offDate) {
                 showAlert('staffOffAlert', 'VUI LÒNG CHỌN NHÂN VIÊN VÀ NGÀY OFF!', 'danger');
                 return;
             }
             
-            const staff = staffData.find(s => s.code === staffCode);
+            const staff = staffData.find(s => s.id === staffId);
             if (!staff) return;
             
-            // Kiểm tra xem nhân viên đã off ngày này chưa
             const alreadyOff = staff.offDays.some(off => off.date === offDate);
             if (alreadyOff) {
-                showAlert('staffOffAlert', `NHÂN VIÊN ${staffCode} ĐÃ OFF VÀO NGÀY ${formatDate(offDate)}!`, 'warning');
+                showAlert('staffOffAlert', `NHÂN VIÊN ${staff.customName} ĐÃ OFF VÀO NGÀY ${formatDate(offDate)}!`, 'warning');
                 return;
             }
             
-            // Thêm ngày off
             staff.offDays.push({
                 date: offDate,
                 reason: offReason.toUpperCase() || 'KHÔNG CÓ LÝ DO'
             });
             
-            // Nếu là off hôm nay, cập nhật trạng thái
             const today = new Date().toISOString().split('T')[0];
             if (offDate === today) {
                 staff.isAvailableToday = false;
             }
             
-            showAlert('staffOffAlert', `ĐÃ ĐÁNH DẤU NHÂN VIÊN ${staffCode} OFF VÀO NGÀY ${formatDate(offDate)}`, 'success');
+            showAlert('staffOffAlert', `ĐÃ ĐÁNH DẤU NHÂN VIÊN ${staff.customName} OFF VÀO NGÀY ${formatDate(offDate)}`, 'success');
             
-            // Cập nhật giao diện
+            // Lưu dữ liệu
+            saveDataToStorage();
+            
             updateTodayOffStaffList();
             updateOffScheduleTable();
             updateStatistics();
-            
-            // Xóa form
             clearOffForm();
         });
         
         // Đánh dấu nhân viên có mặt
         document.getElementById('markAvailableBtn').addEventListener('click', () => {
-            const staffCode = document.getElementById('staffSelect').value;
+            const staffId = parseInt(document.getElementById('staffSelect').value);
             const offDate = document.getElementById('offDate').value;
             
-            if (!staffCode || !offDate) {
+            if (!staffId || !offDate) {
                 showAlert('staffOffAlert', 'VUI LÒNG CHỌN NHÂN VIÊN VÀ NGÀY!', 'danger');
                 return;
             }
             
-            const staff = staffData.find(s => s.code === staffCode);
+            const staff = staffData.find(s => s.id === staffId);
             if (!staff) return;
             
-            // Xóa ngày off nếu có
             const offIndex = staff.offDays.findIndex(off => off.date === offDate);
             if (offIndex !== -1) {
                 staff.offDays.splice(offIndex, 1);
                 
-                // Nếu là hôm nay, cập nhật trạng thái
                 const today = new Date().toISOString().split('T')[0];
                 if (offDate === today) {
                     staff.isAvailableToday = true;
                 }
                 
-                showAlert('staffOffAlert', `ĐÃ XÓA OFF CHO NHÂN VIÊN ${staffCode} VÀO NGÀY ${formatDate(offDate)}`, 'success');
+                showAlert('staffOffAlert', `ĐÃ XÓA OFF CHO NHÂN VIÊN ${staff.customName} VÀO NGÀY ${formatDate(offDate)}`, 'success');
             } else {
-                showAlert('staffOffAlert', `NHÂN VIÊN ${staffCode} KHÔNG OFF VÀO NGÀY ${formatDate(offDate)}`, 'warning');
+                showAlert('staffOffAlert', `NHÂN VIÊN ${staff.customName} KHÔNG OFF VÀO NGÀY ${formatDate(offDate)}`, 'warning');
             }
             
-            // Cập nhật giao diện
+            // Lưu dữ liệu
+            saveDataToStorage();
+            
             updateTodayOffStaffList();
             updateOffScheduleTable();
             updateStatistics();
-            
-            // Xóa form
             clearOffForm();
         });
         
@@ -1960,15 +2794,15 @@
                 
                 staffItem.innerHTML = `
                     <div class="staff-off-info">
-                        <div class="staff-avatar">${staff.code.substring(2)}</div>
+                        <div class="staff-avatar">${staff.id.toString().padStart(2, '0')}</div>
                         <div>
-                            <div><strong>${staff.code}</strong> - ${staff.name}</div>
+                            <div><strong>${staff.customName}</strong> - ${staff.displayName}</div>
                             <div style="color: #e74c3c; font-size: 14px; margin-top: 5px;">
                                 <i class="fas fa-info-circle"></i> LÝ DO: ${offDay.reason}
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-danger btn-sm" onclick="removeOffDay('${staff.code}', '${today}')">
+                    <button class="btn btn-danger btn-sm" onclick="removeOffDay(${staff.id}, '${today}')">
                         <i class="fas fa-user-check"></i> XÓA OFF
                     </button>
                 `;
@@ -1985,32 +2819,30 @@
             const filterDate = document.getElementById('offFilterDate').value;
             const filterStaff = document.getElementById('offFilterStaff').value.trim().toUpperCase();
             
-            // Tạo mảng tất cả ngày off
             let allOffDays = [];
             staffData.forEach(staff => {
                 staff.offDays.forEach(offDay => {
                     allOffDays.push({
-                        staffCode: staff.code,
-                        staffName: staff.name,
+                        staffId: staff.id,
+                        staffName: staff.displayName,
+                        customName: staff.customName,
                         date: offDay.date,
                         reason: offDay.reason
                     });
                 });
             });
             
-            // Áp dụng bộ lọc
             if (filterDate) {
                 allOffDays = allOffDays.filter(off => off.date === filterDate);
             }
             
             if (filterStaff) {
                 allOffDays = allOffDays.filter(off => 
-                    off.staffCode.includes(filterStaff) || 
+                    off.customName.toUpperCase().includes(filterStaff) || 
                     off.staffName.toUpperCase().includes(filterStaff)
                 );
             }
             
-            // Sắp xếp theo ngày
             allOffDays.sort((a, b) => new Date(a.date) - new Date(b.date));
             
             if (allOffDays.length === 0) {
@@ -2037,12 +2869,12 @@
                 
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td><strong>${off.staffCode}</strong> - ${off.staffName}</td>
+                    <td><strong>${off.customName}</strong> - ${off.staffName}</td>
                     <td>${formatDate(off.date)} (${getDayOfWeek(off.date)})</td>
                     <td>${off.reason}</td>
                     <td>${status}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm" onclick="removeOffDay('${off.staffCode}', '${off.date}')">
+                        <button class="btn btn-danger btn-sm" onclick="removeOffDay(${off.staffId}, '${off.date}')">
                             <i class="fas fa-trash"></i> XÓA
                         </button>
                     </td>
@@ -2051,24 +2883,25 @@
             });
         }
         
-        // Hàm xóa off day (có thể gọi từ button)
-        window.removeOffDay = function(staffCode, date) {
-            const staff = staffData.find(s => s.code === staffCode);
+        // Hàm xóa off day
+        window.removeOffDay = function(staffId, date) {
+            const staff = staffData.find(s => s.id === staffId);
             if (!staff) return;
             
             const offIndex = staff.offDays.findIndex(off => off.date === date);
             if (offIndex !== -1) {
                 staff.offDays.splice(offIndex, 1);
                 
-                // Nếu là hôm nay, cập nhật trạng thái
                 const today = new Date().toISOString().split('T')[0];
                 if (date === today) {
                     staff.isAvailableToday = true;
                 }
                 
-                showAlert('staffOffAlert', `ĐÃ XÓA OFF CHO NHÂN VIÊN ${staffCode} VÀO NGÀY ${formatDate(date)}`, 'success');
+                showAlert('staffOffAlert', `ĐÃ XÓA OFF CHO NHÂN VIÊN ${staff.customName} VÀO NGÀY ${formatDate(date)}`, 'success');
                 
-                // Cập nhật giao diện
+                // Lưu dữ liệu
+                saveDataToStorage();
+                
                 updateTodayOffStaffList();
                 updateOffScheduleTable();
                 updateStatistics();
@@ -2083,7 +2916,7 @@
             updateOffScheduleTable();
         });
         
-        // Tab 5: Thống kê
+        // Tab 6: Thống kê
         document.getElementById('refreshStatsBtn').addEventListener('click', updateStatistics);
         
         document.getElementById('exportStatsBtn').addEventListener('click', () => {
@@ -2094,44 +2927,36 @@
         function updateStatistics() {
             const today = new Date().toISOString().split('T')[0];
             
-            // Lọc booking hôm nay
             const todayBookings = bookings.filter(booking => booking.date === today);
-            
-            // Lọc booking tương lai
             const futureBookings = bookings.filter(booking => booking.date > today);
             
-            // Đếm nhân viên off hôm nay
             const offStaffToday = staffData.filter(staff => 
                 staff.offDays.some(off => off.date === today)
             ).length;
             
-            // Cập nhật thống kê tổng quan
             document.getElementById('totalBookingsToday').textContent = todayBookings.length;
             document.getElementById('futureBookingsCount').textContent = futureBookings.length;
             document.getElementById('offStaffToday').textContent = offStaffToday;
             
-            // Cập nhật bảng thống kê nhân viên
             updateStaffStatsTable();
         }
         
         // Cập nhật bảng thống kê nhân viên
         function updateStaffStatsTable() {
             const statDate = document.getElementById('statDate').value;
-            const staffCodeFilter = document.getElementById('statStaffCode').value.trim().toUpperCase();
+            const staffFilter = document.getElementById('statStaffCode').value.trim().toUpperCase();
             
             const statsTableBody = document.getElementById('statsTableBody');
             statsTableBody.innerHTML = '';
             
-            // Lọc nhân viên theo mã (nếu có)
             let filteredStaff = staffData;
-            if (staffCodeFilter) {
+            if (staffFilter) {
                 filteredStaff = staffData.filter(staff => 
-                    staff.code.includes(staffCodeFilter) || 
-                    staff.name.toUpperCase().includes(staffCodeFilter)
+                    staff.customName.toUpperCase().includes(staffFilter) || 
+                    staff.displayName.toUpperCase().includes(staffFilter)
                 );
             }
             
-            // Sắp xếp nhân viên theo số booking (giảm dần)
             filteredStaff.sort((a, b) => b.bookingsAssigned.length - a.bookingsAssigned.length);
             
             if (filteredStaff.length === 0) {
@@ -2150,7 +2975,6 @@
             const selectedDate = statDate || today;
             
             filteredStaff.forEach(staff => {
-                // Đếm số booking trong ngày được chọn
                 let bookingCount = 0;
                 if (selectedDate) {
                     bookingCount = staff.bookingsAssigned.filter(bookingId => {
@@ -2159,10 +2983,8 @@
                     }).length;
                 }
                 
-                // Kiểm tra nhân viên có off vào ngày được chọn không
                 const isOff = staff.offDays.some(off => off.date === selectedDate);
                 
-                // Xác định trạng thái
                 let status = '';
                 if (isOff) {
                     const offDay = staff.offDays.find(off => off.date === selectedDate);
@@ -2175,8 +2997,8 @@
                 
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td><strong>${staff.code}</strong></td>
-                    <td>${staff.name}</td>
+                    <td><strong>${staff.customName}</strong></td>
+                    <td>${staff.displayName}</td>
                     <td><strong>${bookingCount}</strong> BOOKING</td>
                     <td>${staff.roomsAssigned.length > 0 ? staff.roomsAssigned.slice(0, 2).join(', ') : 'CHƯA PHÂN CÔNG'}${staff.roomsAssigned.length > 2 ? '...' : ''}</td>
                     <td>${status}</td>
@@ -2185,13 +3007,137 @@
             });
         }
         
-        // Hàm cập nhật danh sách booking hôm nay
+        // Tab 7: Quản lý dữ liệu
+        document.getElementById('saveDataBtn').addEventListener('click', () => {
+            saveDataToStorage();
+        });
+        
+        document.getElementById('loadDataBtn').addEventListener('click', () => {
+            loadDataFromStorage();
+        });
+        
+        document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
+        
+        document.getElementById('exportAllDataBtn').addEventListener('click', () => exportData('all'));
+        document.getElementById('exportBookingsBtn').addEventListener('click', () => exportData('bookings'));
+        document.getElementById('exportStaffBtn').addEventListener('click', () => exportData('staff'));
+        
+        document.getElementById('importDataBtn').addEventListener('click', () => {
+            const fileInput = document.getElementById('importFile');
+            if (fileInput.files.length > 0) {
+                importDataFromFile(fileInput.files[0]);
+            } else {
+                showAlert('dataAlert', 'VUI LÒNG CHỌN FILE TRƯỚC KHI NHẬP!', 'warning');
+            }
+        });
+        
+        // ==================== CHỨC NĂNG XÓA BOOKING ====================
+        
+        // Hàm hiển thị modal xóa booking
+        window.showDeleteBookingModal = function(bookingId) {
+            const booking = bookings.find(b => b.id === bookingId);
+            if (!booking) return;
+            
+            bookingToDelete = bookingId;
+            
+            const modal = document.getElementById('deleteBookingModal');
+            const message = document.getElementById('deleteBookingMessage');
+            
+            // Kiểm tra xem booking đã được phân phòng chưa
+            let warningMessage = '';
+            if (booking.rooms.length > 0) {
+                warningMessage = '<div style="color: #e74c3c; margin-top: 10px; padding: 10px; background-color: #ffebee; border-radius: 5px;">';
+                warningMessage += '<i class="fas fa-exclamation-triangle"></i> <strong>CẢNH BÁO:</strong> Booking này đã được phân vào ' + booking.rooms.length + ' phòng. Xóa booking sẽ xóa tất cả phân công phòng liên quan!';
+                warningMessage += '</div>';
+            }
+            
+            message.innerHTML = `
+                Bạn có chắc chắn muốn xóa booking <strong>"${booking.name}"</strong>?<br><br>
+                <strong>Thông tin booking:</strong><br>
+                • Ngày: ${formatDate(booking.date)}<br>
+                • Giờ: ${booking.startTime} - ${booking.endTime}<br>
+                • Khách: ${booking.customers} người<br>
+                • Trạng thái: ${getStatusText(booking.status)}<br>
+                • Phòng đã phân: ${booking.rooms.length} phòng<br><br>
+                ${warningMessage}
+                <strong style="color: #c0392b;">HÀNH ĐỘNG NÀY KHÔNG THỂ HOÀN TÁC!</strong>
+            `;
+            
+            modal.style.display = 'flex';
+        };
+        
+        // Xử lý xác nhận xóa booking
+        document.getElementById('confirmDeleteBookingBtn').addEventListener('click', function() {
+            if (!bookingToDelete) return;
+            
+            deleteBooking(bookingToDelete);
+            hideDeleteBookingModal();
+        });
+        
+        // Hủy xóa booking
+        document.getElementById('cancelDeleteBookingBtn').addEventListener('click', hideDeleteBookingModal);
+        
+        // Ẩn modal xóa booking
+        function hideDeleteBookingModal() {
+            const modal = document.getElementById('deleteBookingModal');
+            modal.style.display = 'none';
+            bookingToDelete = null;
+        }
+        
+        // Hàm xóa booking
+        function deleteBooking(bookingId) {
+            const bookingIndex = bookings.findIndex(b => b.id === bookingId);
+            if (bookingIndex === -1) return;
+            
+            const booking = bookings[bookingIndex];
+            
+            // 1. Xóa booking khỏi danh sách bookings
+            bookings.splice(bookingIndex, 1);
+            
+            // 2. Xóa booking khỏi danh sách assignments của nhân viên
+            staffData.forEach(staff => {
+                // Xóa khỏi bookingsAssigned
+                const bookingIndexInStaff = staff.bookingsAssigned.indexOf(bookingId);
+                if (bookingIndexInStaff !== -1) {
+                    staff.bookingsAssigned.splice(bookingIndexInStaff, 1);
+                }
+                
+                // Xóa khỏi currentAssignments
+                const currentIndex = staff.currentAssignments.indexOf(bookingId);
+                if (currentIndex !== -1) {
+                    staff.currentAssignments.splice(currentIndex, 1);
+                }
+                
+                // Xóa roomsAssigned liên quan đến booking này
+                staff.roomsAssigned = staff.roomsAssigned.filter(room => 
+                    !room.includes(`(${booking.name})`)
+                );
+            });
+            
+            // 3. Nếu đang chọn booking này trong tab chia phòng, xóa selection
+            if (selectedBookingId === bookingId) {
+                selectedBookingId = null;
+                document.getElementById('selectBooking').value = '';
+                document.getElementById('bookingInfoBox').style.display = 'none';
+                document.getElementById('roomAssignmentSection').style.display = 'none';
+            }
+            
+            // 4. Hiển thị thông báo thành công
+            showAlert('bookingAlert', `ĐÃ XÓA BOOKING "${booking.name}" THÀNH CÔNG!`, 'success');
+            
+            // 5. Lưu dữ liệu
+            saveDataToStorage();
+            
+            // 6. Cập nhật giao diện
+            updateAllUI();
+        }
+        
+        // Hàm cập nhật danh sách booking hôm nay (có nút xóa)
         function updateTodayBookingsList() {
             const today = new Date().toISOString().split('T')[0];
             const todayBookingsList = document.getElementById('todayBookingsList');
             todayBookingsList.innerHTML = '';
             
-            // Lọc booking hôm nay
             const todayBookings = bookings.filter(booking => booking.date === today);
             
             if (todayBookings.length === 0) {
@@ -2209,7 +3155,15 @@
                 const bookingElement = document.createElement('div');
                 bookingElement.className = 'booking-card booking-status-today';
                 
+                // Thêm nút xóa booking
+                const deleteButton = `
+                    <button class="btn-delete-booking" onclick="showDeleteBookingModal(${booking.id})">
+                        <i class="fas fa-trash"></i> XÓA
+                    </button>
+                `;
+                
                 bookingElement.innerHTML = `
+                    ${deleteButton}
                     <div class="booking-header">
                         <div class="booking-title">${booking.name}</div>
                         <div class="booking-customer-count">${booking.customers} KHÁCH</div>
@@ -2247,28 +3201,20 @@
             });
         }
         
-        // Hàm chọn booking để chia phòng (từ tab booking)
+        // Hàm chọn booking để chia phòng
         window.selectBookingForAssignment = function(bookingId) {
-            // Chuyển sang tab chia phòng
             document.querySelector('[data-tab="room-assignment"]').click();
-            
-            // Chọn booking trong dropdown
             document.getElementById('selectBooking').value = bookingId;
-            
-            // Kích hoạt sự kiện change
             const event = new Event('change');
             document.getElementById('selectBooking').dispatchEvent(event);
         };
         
-        // Hàm hiển thị cảnh báo (ĐÃ SỬA - không tự động ẩn)
+        // Hàm hiển thị cảnh báo
         function showAlert(alertId, message, type) {
             const alertElement = document.getElementById(alertId);
             alertElement.textContent = message.toUpperCase();
             alertElement.className = `alert alert-${type}`;
             alertElement.style.display = 'flex';
-            
-            // KHÔNG có timeout tự động ẩn
-            // Người dùng có thể đóng thông báo bằng cách chuyển tab hoặc nhấn nút khác
         }
         
         // Hàm hiển thị cảnh báo trong tab chia phòng
@@ -2278,8 +3224,12 @@
         
         // Hàm cập nhật trạng thái booking
         function updateBookingStatus(booking) {
+            if (booking.status === 'hoan_thanh') {
+                return; // Đã hoàn thành rồi thì giữ nguyên
+            }
+            
             if (booking.assignedStaff.length >= booking.customers) {
-                booking.status = 'hoan_thanh';
+                booking.status = 'dang_phan_phong'; // CHỈ SỬA THÀNH 'dang_phan_phong', KHÔNG PHẢI 'hoan_thanh'
             } else if (booking.assignedStaff.length > 0) {
                 booking.status = 'dang_phan_phong';
             } else {
@@ -2320,7 +3270,7 @@
         function getStartOfWeek() {
             const today = new Date();
             const dayOfWeek = today.getDay();
-            const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1); // Thứ 2 là đầu tuần
+            const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
             const startOfWeek = new Date(today.setDate(diff));
             return startOfWeek.toISOString().split('T')[0];
         }
@@ -2350,38 +3300,95 @@
         document.addEventListener('DOMContentLoaded', () => {
             updateTodayDate();
             
-            // Đặt ngày mặc định cho các trường date
             const today = new Date().toISOString().split('T')[0];
+            const now = new Date();
+            const currentTime = now.toTimeString().slice(0, 5);
+            
+            // Đặt giá trị mặc định cho các trường
             document.getElementById('tourDate').value = today;
             document.getElementById('tourDate').min = today;
             document.getElementById('offDate').value = today;
             document.getElementById('statDate').value = today;
             document.getElementById('filterDate').value = '';
             document.getElementById('offFilterDate').value = '';
+            document.getElementById('filterCurrentDate').value = today;
+            document.getElementById('filterCurrentTime').value = currentTime;
             
-            // Gắn sự kiện cho các trường thống kê
-            document.getElementById('statDate').addEventListener('change', updateStaffStatsTable);
-            document.getElementById('statStaffCode').addEventListener('input', updateStaffStatsTable);
+            // Khởi tạo dữ liệu nhân viên mặc định
+            initializeStaffData();
             
-            // Thêm một số booking mẫu
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            const tomorrowStr = tomorrow.toISOString().split('T')[0];
+            // Thử tải dữ liệu từ localStorage
+            const hasData = loadDataFromStorage();
             
-            // Thêm off cho một vài nhân viên
-            staffData[0].offDays.push({date: today, reason: 'NGHỈ ỐM'});
-            staffData[0].isAvailableToday = false;
-            
-            staffData[1].offDays.push({date: tomorrowStr, reason: 'NGHỈ PHÉP'});
+            if (!hasData) {
+                // Tạo dữ liệu mẫu nếu không có dữ liệu đã lưu
+                
+                // Thêm off cho một vài nhân viên
+                staffData[0].offDays.push({date: today, reason: 'NGHỈ ỐM'});
+                staffData[0].isAvailableToday = false;
+                staffData[0].customName = 'ANH_TUẤN';
+                
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const tomorrowStr = tomorrow.toISOString().split('T')[0];
+                
+                staffData[1].offDays.push({date: tomorrowStr, reason: 'NGHỈ PHÉP'});
+                staffData[1].customName = 'CHỊ_MAI';
+                
+                // Gán tên tùy chỉnh cho một số nhân viên khác
+                staffData[2].customName = 'NGUYỄN_VĂN_A';
+                staffData[3].customName = 'TRẦN_THỊ_B';
+                staffData[4].customName = '001';
+                staffData[5].customName = '002';
+                
+                // Thêm booking mẫu cho hôm nay
+                const sampleBooking1 = {
+                    id: Date.now(),
+                    name: 'TOUR HÀ NỘI - HẠ LONG',
+                    date: today,
+                    startTime: '09:00',
+                    endTime: '12:00',
+                    durationMinutes: 180,
+                    customers: 25,
+                    notes: 'TOUR CAO CẤP',
+                    status: 'dang_phan_phong',
+                    rooms: [],
+                    assignedStaff: [1, 2, 3, 4, 5]
+                };
+                
+                bookings.push(sampleBooking1);
+                
+                // Thêm booking mẫu cho ngày mai
+                const sampleBooking2 = {
+                    id: Date.now() + 1,
+                    name: 'TOUR SAPA 2 NGÀY 1 ĐÊM',
+                    date: tomorrowStr,
+                    startTime: '08:00',
+                    endTime: '17:00',
+                    durationMinutes: 540,
+                    customers: 30,
+                    notes: 'TOUR TRONG NƯỚC',
+                    status: 'chua_phan_phong',
+                    rooms: [],
+                    assignedStaff: []
+                };
+                
+                bookings.push(sampleBooking2);
+                
+                // Lưu dữ liệu mẫu
+                saveDataToStorage();
+            }
             
             // Cập nhật giao diện
-            updateTodayBookingsList();
-            updateBookingSelect();
-            updateFutureBookingsList('upcoming');
-            updateStaffSelect();
-            updateTodayOffStaffList();
-            updateOffScheduleTable();
-            updateStatistics();
+            updateAllUI();
+            
+            // Tự động lưu khi đóng tab/trang
+            window.addEventListener('beforeunload', function(e) {
+                saveDataToStorage();
+            });
+            
+            // Tự động lưu mỗi 30 giây
+            setInterval(saveDataToStorage, 30000);
         });
     </script>
 </body>
